@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - db
+    environment:
+      DATABASE_URL: postgres://szpp:szpp3776@db:5432/szpp-mini-judge
     ports:
       - 8080:8080
   
