@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - db
     ports:
       - 8080:8080
   
@@ -11,7 +13,7 @@ services:
     image: postgres:15
     restart: always
     volumes:
-      - data/postgresql:/var/lib/postgresql
+      - ./data/postgresql:/var/lib/postgresql
     environment:
       POSTGRES_USER: szpp
       POSTGRES_PASSWORD: szpp3776
