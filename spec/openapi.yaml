@@ -1,0 +1,25 @@
+openapi: '3.1.0'
+info:
+  title: szpp-mini-judge
+  version: 0.1.0
+  description: |-
+    for hands-on-backend-rs
+
+paths:
+  /health:
+    get:
+      summary: health check
+      content:
+        application/json:
+          schema:
+            $ref: 
+
+components:
+  schemas:
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+    

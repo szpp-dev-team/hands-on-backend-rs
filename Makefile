@@ -1,0 +1,2 @@
+generate:
+	openapi-generator generate

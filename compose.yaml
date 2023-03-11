@@ -1,0 +1,20 @@
+services:
+  backend:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+  
+  db:
+    image: postgres:15
+    restart: always
+    volumes:
+      - data/postgresql:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: szpp
+      POSTGRES_PASSWORD: szpp3776
+      POSTGRES_DB: szpp-mini-judge
+    ports:
+      - 5432:5432

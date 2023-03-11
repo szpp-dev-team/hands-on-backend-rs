@@ -1,0 +1,1 @@
+export DATABASE_URL=postgres://szpp:szpp3776@localhost:5432/szpp-mini-judge
