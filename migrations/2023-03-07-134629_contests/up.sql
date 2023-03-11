@@ -5,7 +5,6 @@ CREATE TABLE contests (
     start_at TIMESTAMP NOT NULL,
     end_at TIMESTAMP NOT NULL,
     penalty INT NOT NULL,
-    
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP,
     deleted_at TIMESTAMP
