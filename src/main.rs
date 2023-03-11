@@ -21,7 +21,7 @@ async fn main() -> Result<()> {
     let db_pool = Pool::builder().build(manager)?;
     let db_pool_data = web::Data::new(db_pool);
 
-    env_logger::init_from_env(Env::default());
+    env_logger::init_from_env(Env::new().default_filter_or("info"));
 
     info!("server has launched on http://{HOST}:{PORT}");
     HttpServer::new(move || {
