@@ -7,4 +7,4 @@ pub mod model;
 pub mod repository;
 
 pub type PgPool = Pool<ConnectionManager<PgConnection>>;
-pub type PgPooledConn = PooledConnection<PgPool>;
+pub type PgPooledConn = PooledConnection<ConnectionManager<PgConnection>>;
