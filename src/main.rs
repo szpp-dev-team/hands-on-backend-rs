@@ -10,6 +10,7 @@ use log::info;
 use std::env;
 
 mod db;
+mod schema;
 mod server;
 
 const PORT: &str = "8080";
