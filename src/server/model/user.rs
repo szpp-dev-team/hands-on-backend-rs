@@ -13,7 +13,7 @@ impl User {
     pub fn from_db_model(db_user: &user::User) -> Self {
         Self {
             username: db_user.username.clone(),
-            registered_at: db_user.created_at.clone(),
+            registered_at: db_user.created_at,
         }
     }
 }

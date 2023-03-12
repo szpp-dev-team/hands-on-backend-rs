@@ -8,7 +8,7 @@ use actix_web::{error::ErrorInternalServerError, get, web::Data, HttpResponse};
 pub async fn handle_get_users(db_pool: Data<PgPool>) -> Result<HttpResponse, actix_web::Error> {
     let mut db_conn = db_pool.get().map_err(ErrorInternalServerError)?;
     let users = db_conn
-        .fetch_users()
+        .read_users()
         .map_err(ErrorInternalServerError)?
         .iter()
         .map(User::from_db_model)
