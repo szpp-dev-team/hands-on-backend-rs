@@ -1,5 +1,6 @@
 services:
   backend:
+    container_name: szpp-mini-judge-backend
     restart: always
     build:
       context: .
@@ -12,6 +13,7 @@ services:
       - 8080:8080
   
   db:
+    container_name: szpp-mini-judge-db
     image: postgres:15
     restart: always
     volumes:
