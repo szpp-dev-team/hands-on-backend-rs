@@ -1,5 +1,7 @@
 use crate::server::endpoints::{
-    auth::handle_signin, health_check::handle_check_health, users::handle_get_users,
+    auth::handle_signin,
+    health_check::handle_check_health,
+    users::{handle_get_users, handle_update_user},
 };
 use actix_web::{middleware::Logger, web, App, HttpServer};
 use anyhow::Result;
@@ -34,6 +36,7 @@ async fn main() -> Result<()> {
             .app_data(db_pool_data.clone())
             .service(handle_check_health)
             .service(handle_get_users)
+            .service(handle_update_user)
             .service(handle_signin)
     })
     .bind(("0.0.0.0", PORT.parse()?))?

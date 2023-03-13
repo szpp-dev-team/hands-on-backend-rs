@@ -12,6 +12,7 @@ pub trait UserRepository {
         username: &str,
         encrypted_password: &str,
     ) -> Result<Option<User>>;
+    fn read_user_by_id(&mut self, user_id: i32) -> Result<User>;
     fn update_user(&mut self, user_id: i32, user: &User) -> Result<User>;
     fn remove_user(&mut self, user_id: i32) -> Result<()>;
 }
@@ -43,6 +44,15 @@ impl UserRepository for PgPooledConn {
             .filter(encrypted_password.eq(d_encrypted_password))
             .first(self)
             .optional()?;
+        Ok(res)
+    }
+
+    fn read_user_by_id(&mut self, user_id: i32) -> Result<User> {
+        use crate::schema::users::dsl::*;
+        let res = users
+            .filter(deleted_at.is_null())
+            .filter(id.eq(user_id))
+            .first(self)?;
         Ok(res)
     }
 
