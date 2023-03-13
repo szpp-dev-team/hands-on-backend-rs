@@ -1,10 +1,6 @@
-.PHONY: build
-build:
-	docker compose build
-
 .PHONY: rund
-rund: build
-	docker compose up -d
+rund: 
+	docker compose up -d --build
 
 .PHONY: db/migrate
 db/migrate:
@@ -22,7 +18,3 @@ db/seed: db/migrate
 		-c "COPY users FROM '/tmp/testdata/users.csv' csv header encoding 'UTF8'" \
 		-c "COPY contests FROM '/tmp/testdata/contests.csv' csv header encoding 'UTF8'" \
 		-c "COPY tasks FROM '/tmp/testdata/tasks.csv' csv header encoding 'UTF8'"
-
-.PHONY: generate
-generate:
-	openapi-generator generate
