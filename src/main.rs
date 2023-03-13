@@ -1,4 +1,4 @@
-use crate::server::endpoints::health_check::handle_check_health;
+use crate::server::endpoints::{health_check::handle_check_health, users::handle_get_users};
 use actix_web::{middleware::Logger, web, App, HttpServer};
 use anyhow::Result;
 use diesel::{
@@ -30,6 +30,7 @@ async fn main() -> Result<()> {
             .wrap(Logger::default())
             .app_data(db_pool_data.clone())
             .service(handle_check_health)
+            .service(handle_get_users)
     })
     .bind(("0.0.0.0", PORT.parse()?))?
     .run()
