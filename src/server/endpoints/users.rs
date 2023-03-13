@@ -1,6 +1,6 @@
 use crate::{
     db::{repository::user::UserRepository, PgPool},
-    server::model::user::User,
+    server::model::user::UserResponse,
 };
 use actix_web::{error::ErrorInternalServerError, get, web::Data, HttpResponse};
 
@@ -11,7 +11,7 @@ pub async fn handle_get_users(db_pool: Data<PgPool>) -> Result<HttpResponse, act
         .read_users()
         .map_err(ErrorInternalServerError)?
         .iter()
-        .map(User::from_db_model)
+        .map(UserResponse::from_db_model)
         .collect::<Vec<_>>();
     Ok(HttpResponse::Ok().json(users))
 }
