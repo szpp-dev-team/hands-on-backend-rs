@@ -22,7 +22,7 @@ impl UserRepository for PgPooledConn {
 
     fn read_users(&mut self) -> Result<Vec<User>> {
         use crate::schema::users::dsl::*;
-        let res = users.filter(id.is_null()).load(self)?;
+        let res = users.filter(deleted_at.is_null()).load(self)?;
         Ok(res)
     }
 
