@@ -1,4 +1,6 @@
-use crate::server::endpoints::{health_check::handle_check_health, users::handle_get_users};
+use crate::server::endpoints::{
+    auth::handle_signin, health_check::handle_check_health, users::handle_get_users,
+};
 use actix_web::{middleware::Logger, web, App, HttpServer};
 use anyhow::Result;
 use diesel::{
@@ -12,6 +14,7 @@ use std::env;
 mod db;
 mod schema;
 mod server;
+mod util;
 
 const PORT: &str = "8080";
 const HOST: &str = "0.0.0.0";
@@ -31,6 +34,7 @@ async fn main() -> Result<()> {
             .app_data(db_pool_data.clone())
             .service(handle_check_health)
             .service(handle_get_users)
+            .service(handle_signin)
     })
     .bind(("0.0.0.0", PORT.parse()?))?
     .run()
