@@ -29,14 +29,13 @@ $ diesel --version
 ### db initialization
 
 ```shell
-$ make db/init
-```
-
-## build & migration & run
-
-```shell
 $ make rund
 $ make db/seed
+```
+
+## test
+
+```shell
 $ curl http://localhost:8080/health -i
 HTTP/1.1 200 OK
 content-length: 2
