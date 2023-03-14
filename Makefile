@@ -1,3 +1,7 @@
+.PHONY: build
+build:
+	docker compose build
+
 .PHONY: rund
 rund: 
 	docker compose up -d --build
