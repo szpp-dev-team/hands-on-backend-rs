@@ -15,7 +15,7 @@ diesel_cli は libpq に依存しているので適宜インストールを行�
 
 ```shell
 $ brew install libpq             # for mac users
-$ sudo apt-get install -y libpq  # for ubuntu users
+$ sudo apt-get install -y libpq-dev  # for ubuntu users
 ```
 
 diesel_cli のインストール
