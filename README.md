@@ -26,16 +26,17 @@ $ cargo install diesel_cli --no-default-features --features postgres
 $ diesel --version
 ```
 
-### db migration
+### db initialization
 
 ```shell
-$ make db/seed
+$ make db/init
 ```
 
-## build & run
+## build & migration & run
 
 ```shell
 $ make rund
+$ make db/seed
 $ curl http://localhost:8080/health -i
 HTTP/1.1 200 OK
 content-length: 2

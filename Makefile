@@ -2,6 +2,13 @@
 rund: 
 	docker compose up -d --build
 
+.PHONY: db/init
+db/init:
+	diesel database setup \
+		--database-url postgres://szpp:szpp3776@localhost:5432/szpp-mini-judge
+	diesel migration run \
+		--database-url postgres://szpp:szpp3776@localhost:5432/szpp-mini-judge
+
 .PHONY: db/migrate
 db/migrate:
 	diesel migration revert --all \
